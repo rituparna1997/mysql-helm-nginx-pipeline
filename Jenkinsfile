@@ -5,9 +5,9 @@ pipeline {
         stage('helm deploy') {
             steps {
                 sh 'git clone https://github.com/rituparna1997/mysql-mynginix-lts.git'
-                sh 'cd /var/jenkins_home/workspace/mysql-mynginx'
+                sh 'cd /var/jenkins_home/workspace/mysql-mynginx/mysql-mynginix-lts'
                 sh 'ls'
-                sh 'sudo helm install my-nginx-mysql /mysql-mynginix-lts'
+                sh 'helm install my-nginx-mysql /mysql-mynginix-lts'
                 
             }
         }
