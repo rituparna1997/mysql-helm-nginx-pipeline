@@ -3,7 +3,7 @@ pipeline {
 
     stages  { 
         stage('checkout public repo'){
-            folder = mysql-mynginix-lts("$WORKSPACE/.git")
+            folder = new File("$WORKSPACE/mysql-mynginix-lts/.git")
             if (folder.exists())
             {
                println "Found .git folder. Clearing it.."
