@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('checkout public repo') {
+        stage('remove old chart') {
             steps {
                 sh 'if [ -d "/var/jenkins_home/workspace/mysql-mynginx/mysql-mynginix-lts/.git" ]; then echo "Folder exists"; rm -rf /var/jenkins_home/workspace/mysql-mynginx/mysql-mynginix-lts; else echo "Folder does not exist"; fi'
                 }
