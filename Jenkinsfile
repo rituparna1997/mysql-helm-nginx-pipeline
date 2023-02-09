@@ -10,6 +10,7 @@ pipeline {
         stage('helm deploy') {
             steps {
                 script {
+                    sh 'git clone https://github.com/rituparna1997/mysql-mynginix-lts.git'
                     def chartName = "my-nginx-mysql"
                     def result = sh(script: "helm ls -n devops-tools | grep '\${chartName}' | awk '{print \$1}'", returnStdout: true).trim()
                     sh "echo '${result}'"
