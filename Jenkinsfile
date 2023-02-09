@@ -13,8 +13,7 @@ pipeline {
                     sh 'git clone https://github.com/rituparna1997/mysql-mynginix-lts.git'
                     def chartName = "my-nginx-mysql"
                     def result = sh(script: "helm ls -n devops-tools | grep '\${chartName}' | awk '{print \$1}'", returnStdout: true).trim()
-                    print(result)
-                    if (result == chartName) {
+                    if (${result} == ${chartName}) {
                         echo "Chart '${chartName}' is already deployed. Upgrading chart."
                         sh "helm upgrade ${chartName} mysql-mynginix-lts/mysql-mynginix-lts --install"
                     } else {
