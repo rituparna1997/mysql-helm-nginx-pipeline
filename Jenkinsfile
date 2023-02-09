@@ -1,3 +1,4 @@
+@Library('deploy-conf') _
 pipeline {
     agent any
 
