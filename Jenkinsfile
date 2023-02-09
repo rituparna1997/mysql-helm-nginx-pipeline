@@ -12,7 +12,7 @@ pipeline {
                 sh 'git clone https://github.com/rituparna1997/mysql-mynginix-lts.git'
                 sh 'cd /var/jenkins_home/workspace/mysql-mynginx/mysql-mynginix-lts'
                 sh 'ls'
-                sh 'x = helm list'
+                sh 'x = echo "helm list"'
                 sh 'echo $x'
                 sh 'helm upgrade my-nginx-mysql mysql-mynginix-lts/mysql-mynginix-lts'
             }
