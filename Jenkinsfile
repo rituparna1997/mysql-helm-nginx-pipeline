@@ -1,8 +1,8 @@
 pipeline {
     agent any
 
-    stages  { ('checkout public repo'){
-            folder = mysql-mynginix-lts("$WORKSPACE/.git")
+    stages  { ('checkout public repo')
+             folder = mysql-mynginix-lts("$WORKSPACE/.git"){
             if (folder.exists())
             {
                println "Found .git folder. Clearing it.."
@@ -20,4 +20,3 @@ pipeline {
             }
         }
     }
-}
