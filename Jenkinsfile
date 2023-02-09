@@ -10,7 +10,7 @@ pipeline {
         stage('helm deploy') {
             steps {
                 script {
-                    def chartName = "mysql-mynginix-lts"
+                    def chartName = "my-nginx-mysql-latest"
                     def result = sh(script: "helm ls | grep '\${chartName}' | awk '{print \$1}'", returnStdout: true).trim()
                     if (result == chartName) {
                         echo "Chart '${chartName}' is already deployed. Upgrading chart."
