@@ -4,10 +4,7 @@ pipeline {
     stages {
         stage('checkout public repo') {
             steps {
-                def folder = new File("/var/jenkins_home/workspace/mysql-mynginx/mysql-mynginix-lts/.git")
-                if (folder.exists()) {
-                    println "Found .git folder. Clearing it.."
-                    sh 'git clean -fxd'
+                sh 'if [ -d "/var/jenkins_home/workspace/mysql-mynginx/mysql-mynginix-lts/.git" ]; then echo "Folder exists"; git clean -fxd; else echo "Folder does not exist"; fi'
                 }
                 checkout scm
             }
