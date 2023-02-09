@@ -3,7 +3,7 @@ pipeline {
 
     stages  { 
         stage('checkout public repo'){
-            folder = new File("folder = new File("/var/jenkins_home/workspace/mysql-mynginx/mysql-mynginix-lts/.git")
+            folder = new File("folder = new File("/var/jenkins_home/workspace/mysql-mynginx/.git")
             if (folder.exists())
             {
                println "Found .git folder. Clearing it.."
