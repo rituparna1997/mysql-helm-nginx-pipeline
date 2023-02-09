@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     def chartName = "my-nginx-mysql"
-                    def result = sh(script: "helm ls | grep '\${chartName}' | awk '{print \$1}'", returnStdout: true).trim()
+                    def result = sh(script: "helm ls -n devops-tools | grep '\${chartName}' | awk '{print \$1}'", returnStdout: true).trim()
                     if (result == chartName) {
                         echo "Chart '${chartName}' is already deployed. Upgrading chart."
                         sh "helm upgrade ${chartName} mysql-mynginix-lts/mysql-mynginix-lts --install"
