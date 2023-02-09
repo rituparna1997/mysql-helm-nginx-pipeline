@@ -6,7 +6,6 @@ pipeline {
             steps {
                 sh 'if [ -d "/var/jenkins_home/workspace/mysql-mynginx/mysql-mynginix-lts/.git" ]; then echo "Folder exists"; git clean -fxd; else echo "Folder does not exist"; fi'
                 }
-                checkout scm
             }
         }
         stage('helm deploy') {
