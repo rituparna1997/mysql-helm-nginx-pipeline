@@ -19,7 +19,7 @@ pipeline {
                         sh "helm upgrade ${chartName} mysql-mynginix-lts/mysql-mynginix-lts --install"
                     } else {
                         echo "Chart '${chartName}' is not deployed. Installing chart."
-                        sh "helm install ${chartName} ./your-chart-directory"
+                        sh "helm install ${chartName} mysql-mynginix-lts/mysql-mynginix-lts"
                     }
                 }
             }
