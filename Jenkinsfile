@@ -9,12 +9,17 @@ pipeline {
             }
         stage('helm deploy') {
             steps {
-                sh 'git clone https://github.com/rituparna1997/mysql-mynginix-lts.git'
-                sh 'cd /var/jenkins_home/workspace/mysql-mynginx/mysql-mynginix-lts'
-                sh 'ls'
-                sh 'x = echo "helm list"'
-                sh 'echo $x'
-                sh 'helm upgrade my-nginx-mysql mysql-mynginix-lts/mysql-mynginix-lts'
+                script {
+                    def chartName = "mysql-mynginix-lts"
+                    def result = sh(script: "helm ls | grep '^${chartName}' | awk '{print $1}'", returnStdout: true).trim()
+                    if (result == chartName) {
+                        echo "Chart '${chartName}' is already deployed. Upgrading chart."
+                        sh "helm upgrade ${chartName} mysql-mynginix-lts/mysql-mynginix-lts --install"
+                    } else {
+                        echo "Chart '${chartName}' is not deployed. Installing chart."
+                        sh "helm install ${chartName} ./your-chart-directory"
+                    }
+                }
             }
         }
     }
