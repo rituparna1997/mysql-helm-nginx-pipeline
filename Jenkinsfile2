@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('remove old chart') {
             steps {
-                sh 'if [ -d "/var/lib/jenkins/workspace/parametrized-helm-chart-deplyments1.0" ]; then echo "Folder exists"; rm -rf /var/jenkins_home/workspace/parametrized-helm-chart-deplyments/mysql-mynginix-lts; else echo "Folder does not exist"; fi'
+                sh 'if [ -d "/var/lib/jenkins/workspace/parametrized-helm-chart-deplyments1.0//mysql-mynginix-lts/.git" ]; then echo "Folder exists"; rm -rf /var/jenkins_home/workspace/parametrized-helm-chart-deplyments/mysql-mynginix-lts; else echo "Folder does not exist"; fi'
                 }
             }
         stage('helm deploy') {
